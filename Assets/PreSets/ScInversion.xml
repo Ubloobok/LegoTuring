@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PreSets>
+    <PreSetConfigItem>
+        <Name>Бинарная система счисления: Инвертирование числа.</Name>
+        <Description></Description>
+        <PlainText>
+            0q1->1q1R
+            1q1->0q1R
+            Bq1->BSTOPH
+        </PlainText>
+    </PreSetConfigItem>
+</PreSets>

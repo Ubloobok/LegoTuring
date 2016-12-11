@@ -1,0 +1,202 @@
+﻿<UserControl
+	x:Class="LegoTuringMachine.View.TuringMachineView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:lgControls="clr-namespace:LegoTuringMachine.UI.Controls"
+	x:Name="Root" mc:Ignorable="d">
+	<ContentControl Style="{StaticResource CenteredLegoContentControlStyle}">
+		<Grid x:Name="RootLayout" Width="750">
+			<Grid.RowDefinitions>
+				<RowDefinition x:Name="TapeLayoutRow" Height="Auto" />
+				<RowDefinition Height="20" />
+				<RowDefinition x:Name="ConfigurationLayoutRow" Height="Auto" />
+			</Grid.RowDefinitions>
+			<Grid Grid.Row="0" Name="TapeLayout">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="20" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="25,0,25,0">
+					<TextBlock Text="Состояние: " Grid.Row="0" Grid.Column="0" Style="{DynamicResource TextBlockStyleAccentSmallSubHeader}" />
+					<TextBlock Text="{Binding Path=CurrentState, Converter={StaticResource StateItemVMToStringConverter}, TargetNullValue='&lt;нет&gt;'}" Grid.Row="1" Grid.Column="0" Style="{DynamicResource TextBlockStyleSmallSubHeader}" />
+					<TextBlock Text="      Статус: " Grid.Row="0" Grid.Column="1" Style="{DynamicResource TextBlockStyleAccentSmallSubHeader}" />
+					<TextBlock Text="{Binding Path=CurrentAction, TargetNullValue='&lt;нет&gt;'}" Grid.Row="1" Grid.Column="1" Style="{DynamicResource TextBlockStyleSmallSubHeader}" />
+					<TextBlock Text="      Правило: " Grid.Row="0" Grid.Column="2" Style="{DynamicResource TextBlockStyleAccentSmallSubHeader}" />
+					<TextBlock Text="{Binding Path=CurrentRule, Converter={StaticResource RuleItemVMToStringConverter}, TargetNullValue='&lt;нет&gt;'}" Grid.Row="1" Grid.Column="2" FontFamily="Segoe UI Mono" Style="{DynamicResource TextBlockStyleSmallSubHeader}" />
+				</StackPanel>
+				<Grid Grid.Row="2">
+					<lgControls:TapeControl
+						Focusable="False"
+						Cells="{Binding Path=Cells, Mode=OneWay}"
+						Alphabet="{Binding Path=CurrentConfig.BasicConfig.Alphabet, Mode=OneWay}"
+						Height="{Binding Path=CurrentConfig.BasicConfig.Alphabet.Count, Mode=OneWay, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}">
+					</lgControls:TapeControl>
+				</Grid>
+			</Grid>
+			<Grid Grid.Row="3" Margin="25,0,25,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Name="InputLayoutColumn" Width="250" />
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Name="CurrentConfigurationLayoutColumn" Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid Name="InputLayout" Grid.Column="0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.Row="0" Text="Управление" Style="{DynamicResource TextBlockStyleAccentSubHeader}" />
+					<StackPanel Grid.Row="1">
+						<TextBlock Text="Входная строка" Style="{DynamicResource TextBlockStyleSmallSubHeader}" Margin="0,10,0,0" />
+						<TextBox Text="{Binding Path=InputString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" />
+						<Grid Margin="0,10,0,0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Button
+								Grid.Column="0"
+								Content="" FontFamily="Segoe UI Symbol"
+								Height="25" Margin="0,0,0,0"
+								HorizontalContentAlignment="Center"
+								Command="{Binding Path=DoStartWritingCommand, Mode=OneWay}">
+							</Button>
+							<Button
+								Grid.Column="2"
+								Content="" FontFamily="Segoe UI Symbol"
+								Height="25" Margin="0,0,0,0"
+								HorizontalContentAlignment="Center"
+								Command="{Binding Path=DoStartProcessingCommand, Mode=OneWay}">
+							</Button>
+							<Button
+								Grid.Column="4"
+								Content="" FontFamily="Segoe UI Symbol"
+								Height="25" Margin="0,0,0,0"
+								HorizontalContentAlignment="Center"
+								Command="{Binding Path=DoPauseCommand, Mode=OneWay}">
+							</Button>
+							<Button
+								Grid.Column="6"
+								Content="⬛" FontFamily="Segoe UI Symbol"
+								Height="25" Margin="0,0,0,0"
+								HorizontalContentAlignment="Center" 
+								Command="{Binding Path=DoStopCommand, Mode=OneWay}">
+							</Button>
+						</Grid>
+						<TextBlock
+							Text="{Binding Path=InputMessage, Mode=OneWay}" TextWrapping="WrapWithOverflow"
+							Style="{DynamicResource TextBlockStyleBodyText}"
+							Background="{StaticResource AccentBrush}" Foreground="White"
+							Visibility="{Binding Path=InputMessage, Mode=OneWay, Converter={StaticResource NullableVisibilityConverter}}"
+							Margin="0,10,0,0" Padding="5">
+						</TextBlock>
+					</StackPanel>
+				</Grid>
+				<Grid Name="CurrentConfigurationLayout" Grid.Column="2">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="200" />
+						<ColumnDefinition Width="20" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Row="0"
+						Text="Алгоритм"
+						Style="{DynamicResource TextBlockStyleAccentSubHeader}">
+					</TextBlock>
+					<TextBlock
+						Grid.Row="0" Grid.Column="0" Margin="0,3,0,0"
+						HorizontalAlignment="Right" VerticalAlignment="Center"
+						Style="{DynamicResource TextBlockStyleAccentSmallSubHeader}">
+						<Hyperlink Command="{Binding EnableSelectCurrentConfigModeCommand}">Выбрать другой</Hyperlink>
+					</TextBlock>
+					<ScrollViewer
+						Grid.Row="1" Margin="0,10,0,0"
+						VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+						<StackPanel>
+							<TextBlock Text="Название" Style="{DynamicResource TextBlockStyleSmallSubHeader}" />
+							<TextBlock Text="{Binding Path=CurrentConfig.Name}" Style="{DynamicResource TextBlockStyleBodyText}" TextWrapping="WrapWithOverflow" />
+							<TextBlock Text="Состояния" Style="{DynamicResource TextBlockStyleSmallSubHeader}" Margin="0,10,0,0" />
+							<ItemsControl ItemsSource="{Binding Path=CurrentConfig.BasicConfig.States}">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<TextBlock
+											Margin="0,0,5,0"
+											Text="{Binding Path=., Mode=OneWay, Converter={StaticResource StateItemVMToStringConverter}}"
+											Style="{DynamicResource TextBlockStyleBodyText}">
+										</TextBlock>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel Orientation="Horizontal" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+							<TextBlock Text="Алфавит" Style="{DynamicResource TextBlockStyleSmallSubHeader}" Margin="0,10,0,0" />
+							<ItemsControl ItemsSource="{Binding Path=CurrentConfig.BasicConfig.Alphabet}">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<TextBlock
+											Margin="0,0,5,0"
+											Text="{Binding Path=., Mode=OneWay, Converter={StaticResource LetterItemVMToStringConverter}}"
+											Style="{DynamicResource TextBlockStyleBodyText}">
+										</TextBlock>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel Orientation="Horizontal" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+						</StackPanel>
+					</ScrollViewer>
+					<Grid
+						Name="RulesConfigurationLayout"
+						Grid.Row="1" Grid.Column="2" Margin="0,10,0,0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<TextBlock
+							Grid.Row="0"
+							Text="Правила"
+							Style="{DynamicResource TextBlockStyleSmallSubHeader}" />
+						<ScrollViewer
+							Grid.Row="1"
+							CanContentScroll="True"
+							VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+							<ItemsControl ItemsSource="{Binding Path=CurrentConfig.RulesConfig.Rules}">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<TextBlock
+											Text="{Binding Path=., Converter={StaticResource RuleItemVMToStringConverter}}"
+											FontFamily="Segoe UI Mono" Style="{DynamicResource TextBlockStyleBodyText}"
+											Margin="0,5,5,0" Width="80">
+										</TextBlock>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel Orientation="Horizontal" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+						</ScrollViewer>
+					</Grid>
+				</Grid>
+			</Grid>
+		</Grid>
+	</ContentControl>
+</UserControl>

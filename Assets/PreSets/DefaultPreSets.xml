@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PreSets>
+    <PreSetConfigItem>
+        <Name>Унарная система счисления: Сложение чисел со стиранием исходных данных (без знака "=").</Name>
+        <Description></Description>
+        <PlainText>
+            1q1->Bq2R
+            +q1->Bq1R
+            Bq1->BSTOPR
+            1q2->1q2R
+            +q2->+q2R
+            Bq2->Bq3R
+            1q3->1q3R
+            Bq3->1q4L
+            1q4->1q4L
+            Bq4->Bq5L
+            1q5->1q5L
+            Bq5->Bq1R
+            +q5->+q6L
+            1q6->1q6L
+            Bq6->Bq1R
+            1q7->1q7L
+            Bq7->Bq1R
+        </PlainText>
+    </PreSetConfigItem>
+    <PreSetConfigItem>
+        <Name>Унарная система счисления: Cложение чисел со стиранием исходных данных.</Name>
+        <Description></Description>
+        <PlainText>
+            Bq1->Bq1R
+            1q1->Bq2R
+            +q1->Bq1R
+            =q1->BSTOPH
+            Bq2->1q3L
+            1q2->1q2R
+            +q2->+q2R
+            =q2->=q2R
+            1q3->1q3L
+            +q3->+q3L
+            =q3->=q3L
+            Bq3->Bq1R
+        </PlainText>
+    </PreSetConfigItem>
+    <PreSetConfigItem>
+        <Name>Унарная система счисления: Cложение чисел с сохранением изначальной ленты.</Name>
+        <Description></Description>
+        <PlainText>
+            Bq1->Bq1R
+            aq1->aq1R
+            1q1->aq2R
+            +q1->+q1R
+            =q1->=q4L
+            Bq2->1q3L
+            1q2->1q2R
+            +q2->+q2R
+            =q2->=q2R
+            1q3->1q3L
+            +q3->+q3L
+            =q3->=q3L
+            Bq3->Bq1R
+            aq3->aq1R
+            aq4->1q4L
+            +q4->+q4L
+            Bq4->BSTOPH
+        </PlainText>
+    </PreSetConfigItem>
+    <PreSetConfigItem>
+        <Name>Бинарная система счисления: Инвертирование числа.</Name>
+        <Description></Description>
+        <PlainText>
+            0q1->1q1R
+            1q1->0q1R
+            Bq1->BSTOPH
+        </PlainText>
+    </PreSetConfigItem>
+    <PreSetConfigItem>
+        <Name>Удаление символа '0' из ленты.</Name>
+        <Description></Description>
+        <PlainText>
+            0q1->Bq1R
+            1q1->1q2R
+            0q2->0q2R
+            1q2->0q3L
+            0q3->0q3L
+            1q3->1q4R
+            0q4->1q2R
+            Bq2->Bq5L
+            0q5->Bq5L
+            1q5->1q6R
+            Bq6->BSTOPH
+        </PlainText>
+    </PreSetConfigItem>
+</PreSets>

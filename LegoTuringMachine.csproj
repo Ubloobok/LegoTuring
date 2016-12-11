@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32ADA26E-5CEC-4013-8C99-45220ABC7185}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LegoTuringMachine</RootNamespace>
+    <AssemblyName>LegoTuringMachine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.30816.0</ExpressionBlendVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>G:\Лего-Машина\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LegoTuringMachine.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3B5BE551D5A91527B6C4DB77F7547BAB386B57B2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>LegoMachine_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.4.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Robotics.Lego, Version=2.2.4.0, Culture=neutral, PublicKeyToken=5f361631ec856b74, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\AForge.Robotics.Lego.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.3.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>packages\MahApps.Metro.1.3.0\lib\net40\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NKH.MindSqualls, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\NKH.MindSqualls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\MahApps.Metro.1.3.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\Lib\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Contract\INavigationInteraction.cs" />
+    <Compile Include="Device\AForgeControlDevice.cs" />
+    <Compile Include="Device\ControlDeviceBase.cs" />
+    <Compile Include="Device\MindSquallsControlDevice.cs" />
+    <Compile Include="Device\RotationCompletedEventArgs.cs" />
+    <Compile Include="Extensions\ModelExtensions.cs" />
+    <Compile Include="Extensions\TaskExtensions.cs" />
+    <Compile Include="Implements\RulesParser.cs" />
+    <Compile Include="Implements\SelectableCollection.cs" />
+    <Compile Include="Implements\SharedValue.cs" />
+    <Compile Include="Implements\ThreadToken.cs" />
+    <Compile Include="Model\CommonSettings.cs" />
+    <Compile Include="Model\ISettingsFacade.cs" />
+    <Compile Include="Device\MockControlDevice.cs" />
+    <Compile Include="Device\Direction.cs" />
+    <Compile Include="Device\MoveCompletedEventArgs.cs" />
+    <Compile Include="Device\ReadCompletedEventArgs.cs" />
+    <Compile Include="Device\WriteCompletedEventArgs.cs" />
+    <Compile Include="Management\DependencyRequirement.cs" />
+    <Compile Include="Management\IDependencyRequirement.cs" />
+    <Compile Include="Model\DeviceSettings.cs" />
+    <Compile Include="Model\SettingsFacade.cs" />
+    <Compile Include="UI\Behavior\GridBehavior.cs" />
+    <Compile Include="UI\Controls\CellControl.cs" />
+    <Compile Include="UI\Controls\ChildWindow.cs" />
+    <Compile Include="UI\Controls\GridPanel.cs" />
+    <Compile Include="UI\Controls\TapeControl.cs" />
+    <Compile Include="UI\Controls\Transition.cs" />
+    <Compile Include="UI\Controls\TransitionContentControl.cs" />
+    <Compile Include="UI\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="UI\Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="UI\Converters\StateItemVMToStringConverter.cs" />
+    <Compile Include="UI\Converters\LetterItemVMToStringConverter.cs" />
+    <Compile Include="UI\Converters\MultiplyConverter.cs" />
+    <Compile Include="UI\Converters\NullableConverter.cs" />
+    <Compile Include="UI\Converters\NullableVisibilityConverter.cs" />
+    <Compile Include="UI\Converters\RuleItemVMToStringConverter.cs" />
+    <Compile Include="ViewModel\BaseTuringMachineVM.cs" />
+    <Compile Include="ViewModel\SampleConfigForInversionVM.cs" />
+    <Compile Include="ViewModel\Core\ActionCommand.cs" />
+    <Compile Include="ViewModel\Core\DelegateCommand.cs" />
+    <Compile Include="ViewModel\Core\ViewModelBase.cs" />
+    <Compile Include="ViewModel\DeviceSettingsVM.cs" />
+    <Compile Include="ViewModel\IDeviceSettingsVM.cs" />
+    <Compile Include="ViewModel\Item\LetterItemVM.cs" />
+    <Compile Include="ViewModel\Item\CellItemVM.cs" />
+    <Compile Include="ViewModel\Item\BasicConfigItemVM.cs" />
+    <Compile Include="ViewModel\Item\ComplexConfigItemVM.cs" />
+    <Compile Include="ViewModel\Item\RuleItemVM.cs" />
+    <Compile Include="ViewModel\Item\RulesConfigItemVM.cs" />
+    <Compile Include="ViewModel\Item\SelectorItemVM.cs" />
+    <Compile Include="ViewModel\Item\StateItemVM.cs" />
+    <Compile Include="ViewModel\ITuringMachineVM.cs" />
+    <Compile Include="ViewModel\MockTuringMachineVM.cs" />
+    <Compile Include="ViewModel\SampleConfigForAdditionVM.cs" />
+    <Compile Include="ViewModel\SampleConfigForCompressionVM.cs" />
+    <Compile Include="ViewModel\StudentTuringMachineVM.cs" />
+    <Compile Include="ViewModel\TuringMachineAction.cs" />
+    <Compile Include="View\DeviceSettingsView.xaml.cs">
+      <DependentUpon>DeviceSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectCurrentConfigView.xaml.cs">
+      <DependentUpon>SelectCurrentConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectModeMenuView.xaml.cs">
+      <DependentUpon>SelectModeMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectSampleConfigMenuView.xaml.cs">
+      <DependentUpon>SelectSampleConfigMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SampleConfigForAdditionView.xaml.cs">
+      <DependentUpon>SampleConfigForAdditionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SampleConfigForCompressionView.xaml.cs">
+      <DependentUpon>SampleConfigForCompressionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SampleConfigForInversionView.xaml.cs">
+      <DependentUpon>SampleConfigForInversionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TuringMachineView.xaml.cs">
+      <DependentUpon>TuringMachineView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Device\IControlDevice.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Utilities\PropertyHelper.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Resources\RD.SimpleStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Resources\RD.Theme.Modern.Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DeviceSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectCurrentConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectModeMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectSampleConfigMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SampleConfigForAdditionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SampleConfigForCompressionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SampleConfigForInversionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TuringMachineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="packages.config" />
+    <Resource Include="Resources\Entypo.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\PreSets\DefaultPreSets.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Video\BackVideo1.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\PreSets\ScAddition.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\PreSets\ScInversion.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\PreSets\ScCompression.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

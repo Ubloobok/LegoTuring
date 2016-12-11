@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PreSets>
+    <PreSetConfigItem>
+        <Name>Удаление символа '0' из ленты.</Name>
+        <Description></Description>
+        <PlainText>
+            0q1->Bq1R
+            1q1->1q2R
+            0q2->0q2R
+            1q2->0q3L
+            0q3->0q3L
+            1q3->1q4R
+            0q4->1q2R
+            Bq2->Bq5L
+            0q5->Bq5L
+            1q5->1q6R
+            Bq6->BSTOPH
+        </PlainText>
+    </PreSetConfigItem>
+</PreSets>

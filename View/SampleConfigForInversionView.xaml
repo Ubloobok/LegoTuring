@@ -1,0 +1,200 @@
+﻿<UserControl
+	x:Class="LegoTuringMachine.View.SampleConfigForInversionView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:lmcls="clr-namespace:LegoTuringMachine.UI.Controls"
+	IsTabStop="False" Focusable="False">
+	<Grid>
+		<ContentControl
+			Style="{StaticResource CenteredLegoContentControlStyle}"
+			IsTabStop="False" Focusable="False">
+			<Grid x:Name="RootLayout" Width="800">
+				<Grid.RowDefinitions>
+					<RowDefinition x:Name="HeaderLayoutRow" Height="Auto" />
+					<RowDefinition Height="0" />
+					<RowDefinition x:Name="TapeLayoutRow" Height="Auto" />
+					<RowDefinition Height="20" />
+					<RowDefinition x:Name="ConfigurationLayoutRow" Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid Grid.Row="0">
+					<TextBlock
+						TextAlignment="Center"
+						Style="{DynamicResource TextBlockStyleHeader}"
+						Text="Лего-Машина Тьюринга">
+					</TextBlock>
+				</Grid>
+				<Grid Grid.Row="2" Name="TapeLayout">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="20" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<StackPanel Grid.Row="0" Margin="25,0,25,0">
+						<TextBlock
+							FontWeight="Bold"
+							TextAlignment="Center"
+							Style="{DynamicResource TextBlockStyleSubHeader}"
+							Text="Пример: Инверсия данных («0» в «1» и наоборот)" >
+						</TextBlock>
+					</StackPanel>
+					<Grid Grid.Row="2">
+						<lmcls:TapeControl
+							x:Name="MainTapeControl"
+							IsTabStop="False"
+							Cells="{Binding Path=Cells, Mode=OneWay}"
+							Alphabet="{Binding Path=CurrentConfig.BasicConfig.Alphabet, Mode=OneWay}"
+							Height="{Binding Path=CurrentConfig.BasicConfig.Alphabet.Count, Mode=OneWay, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}">
+						</lmcls:TapeControl>
+					</Grid>
+				</Grid>
+				<Grid Grid.Row="4" Margin="25,0,25,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Name="InputLayoutColumn" Width="*" />
+						<ColumnDefinition Width="20" />
+						<ColumnDefinition Name="WritingLayoutColumn" Width="*" />
+						<ColumnDefinition Width="20" />
+						<ColumnDefinition Name="ProcessingLayoutColumn" Width="*" />
+						<ColumnDefinition Width="20" />
+						<ColumnDefinition Name="CancellationLayoutColumn" Width="*" />
+					</Grid.ColumnDefinitions>
+					<StackPanel Grid.Column="0">
+						<TextBlock Text="Ввод" Style="{DynamicResource TextBlockStyleAccentSubHeader}" TextAlignment="Center" />
+						<TextBlock Text="→" Style="{DynamicResource TextBlockStyleAccentHeader}" TextAlignment="Right" Margin="0,-33,-24,-20" />
+						<TextBox Margin="0,10,0,0" Text="{Binding Path=InputString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="13" />
+						<TextBlock
+							Margin="0,5,0,0"
+							Style="{StaticResource TextBlockStyleSecondaryBodyText}"
+							TextAlignment="Center">
+							<Run Text="Ввод данных, что сжимаем? Кубики – это лента с данными. Символ" />
+							<Run Text="{Binding Source={StaticResource LetterItemVMToStringConverter}, Path=EmptyLetterValueString}" />
+							<Run Text="– нет данных." />
+						</TextBlock>
+						<TextBlock
+							Text="{Binding Path=InputMessage, Mode=OneWay}" TextWrapping="WrapWithOverflow"
+							Style="{DynamicResource TextBlockStyleBodyText}"
+							Background="{StaticResource AccentBrush}" Foreground="White"
+							Visibility="{Binding Path=InputMessage, Mode=OneWay, Converter={StaticResource NullableVisibilityConverter}}"
+							Margin="0,-42,0,0" Padding="5">
+						</TextBlock>
+					</StackPanel>
+					<StackPanel Grid.Column="2">
+						<TextBlock Text="Запись" Style="{DynamicResource TextBlockStyleAccentSubHeader}" TextAlignment="Center" />
+						<TextBlock Text="→" Style="{DynamicResource TextBlockStyleAccentHeader}" TextAlignment="Right" Margin="0,-33,-24,-20" />
+						<Grid Margin="0,10,0,0">
+							<Button
+								Command="{Binding Path=DoPauseCommand, Mode=OneWay}">
+								<TextBlock>
+								<Run Text="" FontFamily="Segoe UI Symbol" />
+								<Run Text="Приостановить запись" />
+								</TextBlock>
+							</Button>
+							<Button
+								Command="{Binding Path=DoStartWritingCommand, Mode=OneWay}"
+								Visibility="{Binding Path=IsWriting, Mode=OneWay, Converter={StaticResource FalseToVisibleConverter}}">
+								<TextBlock>
+									<!--<Run Text="" FontFamily="Segoe UI Symbol" />-->
+									<Run Text="&#128229;" FontFamily="Segoe UI Symbol" />
+									<Run Text="Записать данные" />
+								</TextBlock>
+							</Button>
+						</Grid>
+						<TextBlock
+							Margin="0,5,0,0"
+							Text="Запись введенных данных на ленту, смещение кубиков на нужную позицию."
+							Style="{StaticResource TextBlockStyleSecondaryBodyText}"
+							TextAlignment="Center">
+						</TextBlock>
+					</StackPanel>
+					<StackPanel Grid.Column="4">
+						<TextBlock Text="Выполнение" Style="{DynamicResource TextBlockStyleAccentSubHeader}" TextAlignment="Center" />
+						<TextBlock Text="→" Style="{DynamicResource TextBlockStyleAccentHeader}" TextAlignment="Right" Margin="0,-33,-24,-20" />
+						<Grid Margin="0,10,0,0">
+							<Button
+								Command="{Binding Path=DoPauseCommand, Mode=OneWay}">
+								<TextBlock>
+									<Run Text="" FontFamily="Segoe UI Symbol" />
+									<Run Text="Приостановить выполнение" />
+								</TextBlock>
+							</Button>
+							<Button
+								Command="{Binding Path=DoStartProcessingCommand, Mode=OneWay}"
+								Visibility="{Binding Path=IsProcessing, Mode=OneWay, Converter={StaticResource FalseToVisibleConverter}}">
+								<TextBlock>
+									<!--<Run Text="" FontFamily="Segoe UI Symbol" />-->
+									<Run Text="&#9654;" FontFamily="Segoe UI Symbol" />
+									<Run Text="Выполнить алгоритм" />
+								</TextBlock>
+							</Button>
+						</Grid>
+						<TextBlock
+							Margin="0,5,0,0"
+							Text="Выполнение алгоритма для инвертирования введенных данных, «0» в «1» и наоборот."
+							Style="{StaticResource TextBlockStyleSecondaryBodyText}"
+							TextAlignment="Center">
+						</TextBlock>
+					</StackPanel>
+					<StackPanel Grid.Column="6">
+						<TextBlock Text="Отмена" Style="{DynamicResource TextBlockStyleAccentSubHeader}" TextAlignment="Center" />
+						<Grid Margin="0,10,0,0">
+							<Button
+								Command="{Binding Path=DoStopCommand, Mode=OneWay}">
+								<TextBlock>
+									<!--<Run Text="" FontFamily="Segoe UI Symbol" />-->
+									<Run Text="&#9632;" FontFamily="Segoe UI Symbol" />
+									<Run Text="Отменить действие" />
+								</TextBlock>
+							</Button>
+							<Button
+								Visibility="{Binding Path=IsBusy, Mode=OneWay, Converter={StaticResource FalseToVisibleConverter}}"
+								Command="{Binding Path=DoResetCommand, Mode=OneWay}">
+								<TextBlock>
+									<!--<Run Text="" FontFamily="Segoe UI Symbol" />-->
+									<Run Text="&#9632;" FontFamily="Segoe UI Symbol" />
+									<Run Text="Очистить ленту" />
+								</TextBlock>
+							</Button>
+						</Grid>
+						<TextBlock
+							Margin="0,5,0,0"
+							Text="Прекращение записи данных, или выполнения алгоритма. Очистка значений на ленте."
+							Style="{StaticResource TextBlockStyleSecondaryBodyText}"
+							TextAlignment="Center">
+						</TextBlock>
+					</StackPanel>
+				</Grid>
+			</Grid>
+		</ContentControl>
+		<!--<Rectangle
+			Fill="Black" Opacity="0.25"
+			Visibility="{Binding Path=IsHelpModeEnabled, Converter={StaticResource TrueToVisibleConverter}}">
+		</Rectangle>-->
+		<Popup
+			IsOpen="{Binding Path=IsHelpModeEnabled}"
+			PlacementTarget="{Binding ElementName=MainTapeControl}"
+			Placement="Center">
+			<Popup.Child>
+				<TextBlock
+					Margin="10"
+					TextAlignment="Center"
+					Style="{StaticResource TextBlockStyleAccentSmallSubHeader}">
+					<Run Text="Это лента с входными данными. Столбец с кубиком - ячейка памяти." />
+					<LineBreak />
+					<Run Text="Позицией кубика определяется то, каким символом он является." />
+					<LineBreak />
+					<Run Text="Символ" />
+					<Run Text="{Binding Source={StaticResource LetterItemVMToStringConverter}, Path=EmptyLetterValueString}" />
+					<Run Text="– &lt;пусто&gt;, нет данных, позиция кубика по-умолчанию." />
+				</TextBlock>
+			</Popup.Child>
+		</Popup>
+		<ToggleButton
+			Content="&#10067;" Padding="1,0,0,0"
+			HorizontalAlignment="Right" VerticalAlignment="Top"
+			Width="30" Height="30" 
+			Margin="10"
+			IsChecked="{Binding Path=IsHelpModeEnabled}">
+		</ToggleButton>
+	</Grid>
+</UserControl>

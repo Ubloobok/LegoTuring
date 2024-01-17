@@ -62,18 +62,18 @@ namespace LegoTuringMachine
 			// DEV: Concrete control device may be changed in developing progress.
 			// Mock are using for developing and testing.
 			var mockControlDevice = new MockControlDevice();
-			var minqSquallsControlDevice = new MindSquallsControlDevice();
-			var aForgeControlDevice = new AForgeControlDevice();
+			//var minqSquallsControlDevice = new MindSquallsControlDevice();
+			//var aForgeControlDevice = new AForgeControlDevice();
 
-			IControlDevice currentControlDevice;
-			if (EnvironmentChecker.IsChecked == true)
-			{
-				currentControlDevice = mockControlDevice;
-			}
-			else
-			{
-				currentControlDevice = aForgeControlDevice;
-			}
+			IControlDevice currentControlDevice = mockControlDevice;
+			//if (EnvironmentChecker.IsChecked == true)
+			//{
+			//	currentControlDevice = mockControlDevice;
+			//}
+			//else
+			//{
+			//	currentControlDevice = aForgeControlDevice;
+			//}
 
 			var settingsFacade = new SettingsFacade();
 			var sharedActiveCellIndex = new SharedValue<int?>() { Value = null };
